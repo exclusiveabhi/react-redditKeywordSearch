@@ -1,7 +1,35 @@
 const axios = require('axios');
 
-const redditAPI = axios.create({
-    baseURL: 'https://www.reddit.com',
-});
+const getAccessToken = async () => {
+    const clientId = 'ztVzNjqFi_IiPoM5wXA43w';
+    const clientSecret = '	rGNGu2uhTfuiDUiyQo3uGHGF9Toc5A';
+    const auth = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
 
-module.exports = redditAPI;
+    try {
+        const response = await axios.post('https://www.reddit.com/api/v1/access_token', 'grant_type=client_credentials', {
+            headers: {
+                'Authorization': `Basic ${auth}`,
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+        });
+
+        return response.data.access_token;
+    } catch (error) {
+        console.error('Error obtaining access token:', error);
+        throw error;
+    }
+};
+
+const createRedditAPI = async () => {
+    const accessToken = await getAccessToken();
+
+    return axios.create({
+        baseURL: 'https://www.reddit.com',
+        headers: {
+            'Authorization': `Bearer ${accessToken}`,
+            'User-Agent': 'Reddit Search/1.0.0 (https://reddit-keyword-search.vercel.app/)',
+        },
+    });
+};
+
+module.exports = createRedditAPI;

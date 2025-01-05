@@ -1,9 +1,10 @@
-const redditAPI = require('../config/redditAPI');
+const createRedditAPI = require('../config/redditAPI');
 
 const searchPosts = async (req, res) => {
     const { subreddit, keyword, time } = req.query;
 
     try {
+        const redditAPI = await createRedditAPI();
         const response = await redditAPI.get(`/r/${subreddit}/search.json`, {
             params: { q: keyword, restrict_sr: true, sort: 'new' },
         });
