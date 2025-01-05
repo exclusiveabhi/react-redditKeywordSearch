@@ -1,4 +1,4 @@
-# 🚀 Reddit Keyword Search - MERN Stack Application
+# 🚀 Reddit Keyword Search - React.JS Application
 
 An intuitive and dynamic Reddit search application built with the **React.JS**. This app allows users to search specific subreddits for posts containing certain keywords and filter results by date ranges like **Today**, **Yesterday**, or **This Week**. Perfect for staying up-to-date with the latest trends and topics on Reddit!
 
