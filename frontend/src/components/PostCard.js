@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, CardContent, CardMedia, Typography, Button, Box, Collapse } from '@mui/material';
+import { Card, CardContent, CardMedia, Typography, Button, Collapse } from '@mui/material';
 import { styled } from '@mui/system';
 import PostDetails from './PostDetails';
 

@@ -1,23 +1,24 @@
 import React, { useState } from 'react';
-import { Typography, Box, CircularProgress, Select, MenuItem, FormControl, InputLabel, Grid } from '@mui/material';
+import { Box, Typography, FormControl, InputLabel, Select, MenuItem, Grid, CircularProgress } from '@mui/material';
 import SearchBar from '../components/SearchBar';
 import PostCard from '../components/PostCard';
 
 const HomePage = () => {
     const [subreddit, setSubreddit] = useState('');
     const [keyword, setKeyword] = useState('');
+    const [filter, setFilter] = useState('all');
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [filter, setFilter] = useState('all');
 
     const fetchPosts = async () => {
         setLoading(true);
         try {
             const response = await fetch(
-                `https://redditkeywordsearch-api.onrender.com/api/reddit/search?subreddit=${subreddit}&keyword=${keyword}&time=${filter}`
+                `https://www.reddit.com/r/${subreddit}/search.json?q=${keyword}&restrict_sr=1`
             );
             const data = await response.json();
-            setPosts(data);
+            console.log('Fetched posts:', data); // Debugging log
+            setPosts(data.data.children.map(child => child.data)); // Ensure posts is an array of post objects
         } catch (error) {
             console.error('Error fetching posts:', error);
         }
@@ -28,7 +29,7 @@ const HomePage = () => {
         const now = new Date();
         const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime() / 1000;
         const yesterdayStart = todayStart - 86400;
-        const weekStart = todayStart - 7 * 86400;
+        const weekStart = todayStart - 604800;
 
         switch (filter) {
             case 'today':
@@ -43,13 +44,14 @@ const HomePage = () => {
     };
 
     const filteredPosts = filterPostsByDate();
+    console.log('Filtered posts:', filteredPosts); // Debugging log
 
     return (
         <Box sx={{ mt: 4 }}>
             <center>
-            <Typography variant="h4" gutterBottom>
-                Assignment no:- 3 Reddit
-            </Typography>
+                <Typography variant="h4" gutterBottom>
+                    Assignment no:- 3 Reddit
+                </Typography>
             </center>
             <SearchBar
                 subreddit={subreddit}
@@ -79,7 +81,7 @@ const HomePage = () => {
                 </Box>
             ) : (
                 <Grid container spacing={2} sx={{ mt: 2 }}>
-                    {filteredPosts.map(post => (
+                    {Array.isArray(filteredPosts) && filteredPosts.map(post => (
                         <Grid item key={post.id}>
                             <PostCard post={post} />
                         </Grid>
