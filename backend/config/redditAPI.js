@@ -1,8 +1,8 @@
 const axios = require('axios');
 
 const getAccessToken = async () => {
-    const clientId = 'ztVzNjqFi_IiPoM5wXA43w';
-    const clientSecret = 'rGNGu2uhTfuiDUiyQo3uGHGF9Toc5A';
+    const clientId = 'aQSKxLHVhwswCBHOgPrzSg';
+    const clientSecret = '2tCql4tb6q1MRkFrNKOCKhAQKCpI-w';
     const auth = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
 
     try {
