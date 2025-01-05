@@ -6,7 +6,7 @@ An intuitive and dynamic Reddit search application built with the **React.JS**. 
 
 ## 🌍 Live Demo
 
-[**Check out the live demo**](https://example.com)
+[**Check out the live demo**](https://reddit-keyword-search.vercel.app/)
 
 ---
 
