@@ -15,18 +15,26 @@ const searchPosts = async (req, res) => {
             week: now - 604800, // 7 days
         };
 
-        const posts = response.data.data.children
-            .filter(post =>
-                time
-                    ? post.data.created_utc >= timeFilters[time]
-                    : true
-            )
-            .map(post => post.data);
+        const filteredPosts = response.data.data.children.filter(post => {
+            const postTime = post.data.created_utc;
+            if (time === 'all') return true;
+            return postTime >= timeFilters[time];
+        });
+
+        const posts = filteredPosts.map(post => ({
+            id: post.data.id,
+            title: post.data.title,
+            thumbnail: post.data.thumbnail,
+            created_utc: post.data.created_utc,
+        }));
 
         res.json(posts);
     } catch (error) {
-        res.status(500).json({ error: 'Error fetching posts from Reddit' });
+        console.error('Error fetching posts:', error);
+        res.status(500).json({ error: 'Failed to fetch posts' });
     }
 };
 
-module.exports = { searchPosts };
+module.exports = {
+    searchPosts,
+};
