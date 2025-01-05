@@ -1,8 +1,8 @@
 const axios = require('axios');
-
+//this file not implemented in the project
 const getAccessToken = async () => {
-    const clientId = 'aQSKxLHVhwswCBHOgPrzSg';
-    const clientSecret = '2tCql4tb6q1MRkFrNKOCKhAQKCpI-w';
+    const clientId = ''; 
+    const clientSecret = ''; 
     const auth = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
 
     try {
