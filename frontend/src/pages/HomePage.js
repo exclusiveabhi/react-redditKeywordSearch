@@ -14,7 +14,7 @@ const HomePage = () => {
         setLoading(true);
         try {
             const response = await fetch(
-                `http://localhost:5000/api/reddit/search?subreddit=${subreddit}&keyword=${keyword}&time=${filter}`
+                `https://redditkeywordsearch-api.onrender.com/api/reddit/search?subreddit=${subreddit}&keyword=${keyword}&time=${filter}`
             );
             const data = await response.json();
             setPosts(data);
@@ -48,7 +48,7 @@ const HomePage = () => {
         <Box sx={{ mt: 4 }}>
             <center>
             <Typography variant="h4" gutterBottom>
-                Assignment no: 3 Reddit Search
+                Assignment no:- 3 Reddit
             </Typography>
             </center>
             <SearchBar
