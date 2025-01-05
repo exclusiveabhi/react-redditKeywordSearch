@@ -122,5 +122,5 @@ We welcome contributions! Follow these steps:
 ## 📧 Contact
 
 Have questions or suggestions? Reach out:  
-- **Email**: imexclusiveabhi@gmail.com  
+
 - **GitHub**: [Abhishek](https://github.com/exclusiveabhi)  
