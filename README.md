@@ -4,6 +4,12 @@ An intuitive and dynamic Reddit search application built with the **React.JS**. 
 
 ---
 
+## 🌍 Live Demo
+
+[**Check out the live demo**](https://example.com)
+
+---
+
 ## 🌟 Features
 
 - 🔍 **Search Subreddits by Keywords**  
@@ -90,12 +96,6 @@ An intuitive and dynamic Reddit search application built with the **React.JS**. 
 2. Enter a **Keyword** (e.g., `react`).
 3. Hit the **Search** button.
 4. Use the filter dropdown to refine your results by date range.
-
----
-
-## 🌍 Live Demo
-
-[**Check out the live demo**](https://example.com)
 
 ---
 
