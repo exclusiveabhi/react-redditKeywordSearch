@@ -47,18 +47,19 @@ An intuitive and dynamic Reddit search application built with the **React.JS**. 
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/yourusername/RedditKeywordSearch-MERN.git
+   git clone https://github.com/exclusiveabhi/react-redditKeywordSearch.git
    ```
 
 2. **Navigate to the Project Directory**
    ```bash
-   cd RedditKeywordSearch-MERN
+   cd react-redditKeywordSearch
    ```
 
 3. **Install Dependencies**
    - Install frontend dependencies:
      ```bash
-     cd frontend && npm install
+     cd frontend 
+     npm install
      ```
    - Install backend dependencies:
      ```bash
@@ -68,7 +69,7 @@ An intuitive and dynamic Reddit search application built with the **React.JS**. 
 4. **Start the Application**
    - Start the backend server:
      ```bash
-     npm start
+     node index.js
      ```
    - Start the frontend application:
      ```bash
