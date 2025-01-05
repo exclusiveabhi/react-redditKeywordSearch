@@ -2,7 +2,7 @@ const axios = require('axios');
 
 const getAccessToken = async () => {
     const clientId = 'ztVzNjqFi_IiPoM5wXA43w';
-    const clientSecret = '	rGNGu2uhTfuiDUiyQo3uGHGF9Toc5A';
+    const clientSecret = 'rGNGu2uhTfuiDUiyQo3uGHGF9Toc5A';
     const auth = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
 
     try {
@@ -15,7 +15,7 @@ const getAccessToken = async () => {
 
         return response.data.access_token;
     } catch (error) {
-        console.error('Error obtaining access token:', error);
+        console.error('Error obtaining access token:', error.message);
         throw error;
     }
 };
@@ -27,7 +27,7 @@ const createRedditAPI = async () => {
         baseURL: 'https://www.reddit.com',
         headers: {
             'Authorization': `Bearer ${accessToken}`,
-            'User-Agent': 'Reddit Search/1.0.0 (https://reddit-keyword-search.vercel.app/)',
+            'User-Agent': 'YourAppName/1.0.0 (http://yourapp.com)',
         },
     });
 };

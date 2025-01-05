@@ -4,6 +4,7 @@ const searchPosts = async (req, res) => {
     const { subreddit, keyword, time } = req.query;
 
     try {
+        console.log(`Fetching posts for subreddit: ${subreddit}, keyword: ${keyword}, time: ${time}`);
         const redditAPI = await createRedditAPI();
         const response = await redditAPI.get(`/r/${subreddit}/search.json`, {
             params: { q: keyword, restrict_sr: true, sort: 'new' },
@@ -31,8 +32,8 @@ const searchPosts = async (req, res) => {
 
         res.json(posts);
     } catch (error) {
-        console.error('Error fetching posts:', error);
-        res.status(500).json({ error: 'Failed to fetch posts' });
+        console.error('Error fetching posts:', error.message);
+        res.status(500).json({ error: 'Failed to fetch posts', details: error.message });
     }
 };
 
